@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.dmarangoni.cursomc.domain.enums.TipoCliente;
@@ -31,6 +30,9 @@ public class Cliente implements Serializable{
 	
 	@OneToMany(mappedBy="cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
+	
+	@OneToMany(mappedBy="cliente")
+	private List<Pedido> pedidos = new ArrayList<>();
 	
 	//representa a classe de telefones que nao foi implementada po ser simples
 	@ElementCollection
@@ -106,6 +108,15 @@ public class Cliente implements Serializable{
 	public void setTelefones(Set<String> telefones) {
 		this.telefones = telefones;
 	}
+	
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
+	
 
 	@Override
 	public int hashCode() {
@@ -128,6 +139,5 @@ public class Cliente implements Serializable{
 			return false;
 		return true;
 	}
-	
 	
 }
