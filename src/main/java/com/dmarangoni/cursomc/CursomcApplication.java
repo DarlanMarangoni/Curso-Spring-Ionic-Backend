@@ -1,6 +1,7 @@
 package com.dmarangoni.cursomc;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import com.dmarangoni.cursomc.domain.Cidade;
 import com.dmarangoni.cursomc.domain.Cliente;
 import com.dmarangoni.cursomc.domain.Endereco;
 import com.dmarangoni.cursomc.domain.Estado;
+import com.dmarangoni.cursomc.domain.ItemPedido;
 import com.dmarangoni.cursomc.domain.Pagamento;
 import com.dmarangoni.cursomc.domain.PagamentoComBoleto;
 import com.dmarangoni.cursomc.domain.PagamentoComCartao;
@@ -25,7 +27,7 @@ import com.dmarangoni.cursomc.repositories.CidadeRepository;
 import com.dmarangoni.cursomc.repositories.ClienteRepository;
 import com.dmarangoni.cursomc.repositories.EnderecoRepository;
 import com.dmarangoni.cursomc.repositories.EstadoRepository;
-import com.dmarangoni.cursomc.repositories.PagamentoRepository;
+import com.dmarangoni.cursomc.repositories.ItemPedidoReposistory;
 import com.dmarangoni.cursomc.repositories.PedidoRepository;
 import com.dmarangoni.cursomc.repositories.ProdutoRepository;
 
@@ -49,12 +51,12 @@ public class CursomcApplication implements CommandLineRunner {
 	
 	@Autowired 
 	private EnderecoRepository enderecoRepository;
-	
-	@Autowired
-	private PagamentoRepository pagamentoRepository;
-	
+		
 	@Autowired
 	private PedidoRepository pedidoRepository;
+	
+	@Autowired
+	private ItemPedidoReposistory itemPedidoReposistory;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -120,10 +122,18 @@ public class CursomcApplication implements CommandLineRunner {
 		cli1.getPedidos().addAll(Arrays.asList(ped1, ped2));
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
+
+		ItemPedido ip1 = new ItemPedido(ped1, p1, 0, 1, 2000.00);
+		ItemPedido ip2 = new ItemPedido(ped1, p3, 0, 2, 80.00);
+		ItemPedido ip3 = new ItemPedido(ped2, p2, 100.00, 1, 800.00);
 		
-		//pagamentoRepository.saveAll(Arrays.asList(pgto2));
+		ped1.getItens().addAll(Arrays.asList(ip1, ip2));
+		ped2.getItens().addAll(Arrays.asList(ip3));
 		
-		System.out.println(EstadoPagamento.QUITADO);
-		System.out.println(pgto2);
+		p1.getItens().addAll(Arrays.asList(ip1));
+		p2.getItens().addAll(Arrays.asList(ip3));
+		p3.getItens().addAll(Arrays.asList(ip2));
+		
+		itemPedidoReposistory.saveAll(Arrays.asList(ip1, ip2, ip3));
 	}
 }
