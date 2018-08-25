@@ -12,6 +12,7 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
 import com.dmarangoni.cursomc.domain.enums.EstadoPagamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)//Para mapear uma herança (tabelão ou tab individual)
@@ -20,8 +21,9 @@ public abstract class Pagamento implements Serializable{
 
 	@Id
 	private int id;
-	private int estadoPagamento;
+	private int estado;
 	
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name="pedido_id")
 	@MapsId //para mapear a coluna do Pedido com mesmo nome
@@ -33,7 +35,7 @@ public abstract class Pagamento implements Serializable{
 
 	public Pagamento(EstadoPagamento estadoPagamento, Pedido pedido) {
 		super();
-		this.estadoPagamento = estadoPagamento.getCod();
+		this.estado = estadoPagamento.getCod();
 		this.pedido = pedido;
 	}
 
@@ -45,12 +47,12 @@ public abstract class Pagamento implements Serializable{
 		this.id = id;
 	}
 
-	public EstadoPagamento getEstadoPagamento() {
-		return EstadoPagamento.toEnum(estadoPagamento);
+	public EstadoPagamento getEstado() {
+		return EstadoPagamento.toEnum(estado);
 	}
 
 	public void setEstadoPagamento(EstadoPagamento estadoPagamento) {
-		this.estadoPagamento = estadoPagamento.getCod();
+		this.estado = estadoPagamento.getCod();
 	}
 
 	public Pedido getPedido() {

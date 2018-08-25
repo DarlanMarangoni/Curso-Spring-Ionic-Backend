@@ -18,10 +18,12 @@ public class PagamentoComBoleto extends Pagamento{
 	@Temporal(TemporalType.DATE)
 	private Date dataPagamento;
 	
+	public PagamentoComBoleto() {
 		
-
-	public PagamentoComBoleto(EstadoPagamento estadoPagamento, Pedido pedido, Date dataVencimento, Date dataPagamento) {
-		super(estadoPagamento, pedido);
+	}
+		
+	public PagamentoComBoleto(EstadoPagamento estado, Pedido pedido, Date dataVencimento, Date dataPagamento) {
+		super(estado, pedido);
 		this.dataVencimento = dataVencimento;
 		this.dataPagamento = dataPagamento;
 	}

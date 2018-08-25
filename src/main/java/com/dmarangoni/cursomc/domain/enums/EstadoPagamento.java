@@ -25,7 +25,7 @@ public enum EstadoPagamento {
 	}
 	
 	public static EstadoPagamento toEnum(Integer cod) {
-		System.out.println(cod);
+		
 		if(cod == null) {
 			return null;
 		}
