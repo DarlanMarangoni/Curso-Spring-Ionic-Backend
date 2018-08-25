@@ -1,7 +1,6 @@
 package com.dmarangoni.cursomc;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +27,6 @@ import com.dmarangoni.cursomc.repositories.ClienteRepository;
 import com.dmarangoni.cursomc.repositories.EnderecoRepository;
 import com.dmarangoni.cursomc.repositories.EstadoRepository;
 import com.dmarangoni.cursomc.repositories.ItemPedidoReposistory;
-import com.dmarangoni.cursomc.repositories.PagamentoRepository;
 import com.dmarangoni.cursomc.repositories.PedidoRepository;
 import com.dmarangoni.cursomc.repositories.ProdutoRepository;
 
@@ -59,8 +57,8 @@ public class CursomcApplication implements CommandLineRunner {
 	@Autowired
 	private ItemPedidoReposistory itemPedidoReposistory;
 	
-	@Autowired
-	private PagamentoRepository pagamentoRepository;
+	//@Autowired
+	//private PagamentoRepository pagamentoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
