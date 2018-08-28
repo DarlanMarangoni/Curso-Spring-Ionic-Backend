@@ -1,16 +1,14 @@
 package com.dmarangoni.cursomc.domain;
 
-import java.util.List;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 //Serializible -> diz que os objetos dessa classe podem ser gravadas em bytes
@@ -19,10 +17,9 @@ public class Categoria implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Integer id;
 	private String nome;
 	
-	@JsonManagedReference//para barrar referencia ciclica
 	@ManyToMany(mappedBy="categorias")
 	private List<Produto> produtos = new ArrayList<>();
 
@@ -35,11 +32,11 @@ public class Categoria implements Serializable {
 		this.nome = nome;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

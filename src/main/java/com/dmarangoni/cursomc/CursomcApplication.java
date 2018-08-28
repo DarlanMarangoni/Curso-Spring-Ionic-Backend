@@ -27,6 +27,7 @@ import com.dmarangoni.cursomc.repositories.ClienteRepository;
 import com.dmarangoni.cursomc.repositories.EnderecoRepository;
 import com.dmarangoni.cursomc.repositories.EstadoRepository;
 import com.dmarangoni.cursomc.repositories.ItemPedidoReposistory;
+import com.dmarangoni.cursomc.repositories.PagamentoRepository;
 import com.dmarangoni.cursomc.repositories.PedidoRepository;
 import com.dmarangoni.cursomc.repositories.ProdutoRepository;
 
@@ -57,8 +58,8 @@ public class CursomcApplication implements CommandLineRunner {
 	@Autowired
 	private ItemPedidoReposistory itemPedidoReposistory;
 	
-	//@Autowired
-	//private PagamentoRepository pagamentoRepository;
+	@Autowired
+	private PagamentoRepository pagamentoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CursomcApplication.class, args);
@@ -125,7 +126,7 @@ public class CursomcApplication implements CommandLineRunner {
 		
 		pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
 		
-		//pagamentoRepository.saveAll(Arrays.asList(pgto1, pgto2));
+		pagamentoRepository.saveAll(Arrays.asList(pgto1, pgto2));
 
 		ItemPedido ip1 = new ItemPedido(ped1, p1, 0, 1, 2000.00);
 		ItemPedido ip2 = new ItemPedido(ped1, p3, 0, 2, 80.00);
