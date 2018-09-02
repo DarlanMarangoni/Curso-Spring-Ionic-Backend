@@ -1,6 +1,7 @@
 package com.dmarangoni.cursomc.domain;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,7 +39,7 @@ public class Endereco implements Serializable{
 	}
 
 	public Endereco(String logradouro, String numero, String complemento, String bairro, String cep,
-			Cliente cliente, Cidade cidade) {
+			Cliente cliente, Cidade cid) {
 		super();
 		this.logradouro = logradouro;
 		this.numero = numero;
@@ -46,7 +47,7 @@ public class Endereco implements Serializable{
 		this.bairro = bairro;
 		this.cep = cep;
 		this.cliente = cliente;
-		this.setCidade(cidade);
+		this.setCidade(cid);
 	}
 
 	public int getId() {
@@ -113,8 +114,8 @@ public class Endereco implements Serializable{
 		return cidade;
 	}
 
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
+	public void setCidade(Cidade c1) {
+		this.cidade = c1;
 	}
 
 	@Override
