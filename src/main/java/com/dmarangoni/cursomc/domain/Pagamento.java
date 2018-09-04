@@ -3,7 +3,6 @@ package com.dmarangoni.cursomc.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
-
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -13,9 +12,11 @@ import javax.persistence.OneToOne;
 
 import com.dmarangoni.cursomc.domain.enums.EstadoPagamento;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)//Para mapear uma herança (tabelão ou tab individual)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public abstract class Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 
