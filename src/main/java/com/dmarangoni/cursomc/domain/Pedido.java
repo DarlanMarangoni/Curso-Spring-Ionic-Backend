@@ -1,4 +1,4 @@
-package com.dmarangoni.cursomc.domain;
+	package com.dmarangoni.cursomc.domain;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Pedido implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -22,6 +24,8 @@ public class Pedido implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm")
 	private Date instantDate;
 	
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
@@ -47,6 +51,15 @@ public class Pedido implements Serializable{
 		this.instantDate = instantDate;
 		this.endereco = endereco;
 		this.cliente = cliente;
+	}
+	
+	public double getValorTotal() {
+		double sum = 0;
+		//para cada item pedido ip na minha lista de item
+		for (ItemPedido ip : itens) {
+			sum = sum + ip.getSubtotal();
+		}
+		return sum;
 	}
 
 	public int getId() {
