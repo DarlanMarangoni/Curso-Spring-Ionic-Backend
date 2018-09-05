@@ -1,0 +1,31 @@
+[33m647db0e[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Inserindo Pedido
+[33m0444398[m Subtotal, total do pedido e end point pedido mostrar produto
+[33m8f27904[m Busca de produtos por nome e categoria
+[33m4f88541[m Validacao customizada: email nao repetido na atualizacao de Cliente
+[33m871cbfe[m Validacao customizada email nao repetido na insercao de cliente
+[33m2b9f330[m Validacao customizada de CPF ou CNPJ na insercao de cliente
+[33m47a2a71[m Ajustando e testando a delecao de Clientes
+[33md790fd4[m Inserindo um novo cliente com POST
+[33m627d80d[m Correcoes: update de CategoriaService e construtor de Pagamento
+[33m683583f[m PUT, DELETE e GET para Cliente
+[33m6d85452[m Personalizando retorno da validacao
+[33m0207fbc[m Validacao sintatica com Bean Validation
+[33ma9a991f[m Paginacao com parametros opcionais na requisicao
+[33m6bc080d[m Listando todas Categorias com DTO
+[33mf440c2f[m Deletando uma Categoria com DELETE
+[33m90f9e69[m Atualizando Categoria com PUT e outros pequenos ajustes
+[33mc479c2c[m Inserindo uma nova Categoria com POST e apagado JsonManagedReference
+[33mcf3fa75[m Auteração JsonBackReference to JsonIgnore
+[33mbc42544[m ClienteResourse, ClienteService, PedidoResource e PedidoService
+[33m5d8be6c[m ItemPedido e ItemPedidoPK
+[33m0899a73[m Pedido, Pagamento e EstadoPagamento
+[33m21772c7[m Cliente TipoClilente Telefones e Enderecos
+[33m98cbe4d[m Estado e Cidade
+[33m5206188[m Ajuste no endpoint Categoria/{id} e tratamento de exeption
+[33m88382dc[m Produto e associacao muitos para muitos
+[33ma320f2f[m Criando operacao de instanciacao
+[33m64b68af[m Criando repository e service para categoria
+[33m1300254[m Banco de dados H2 e criacao automatica do banco de dados
+[33ma20d6af[m Testando a primeira classe de dominio
+[33mffa52f3[m REST Testado
+[33m7826a2f[m Projeto criado
