@@ -55,6 +55,8 @@ public class Cliente implements Serializable{
 	@CollectionTable(name="Telefone")
 	private Set<String> telefones = new HashSet<>();
 	
+	private String imgUri;
+	
 	public Cliente() {
 		addPerfil(Perfil.CLIENTE);
 	}
@@ -169,5 +171,13 @@ public class Cliente implements Serializable{
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	public String getImgUri() {
+		return imgUri;
+	}
+
+	public void setImgUri(String imgUri) {
+		this.imgUri = imgUri;
 	}
 }

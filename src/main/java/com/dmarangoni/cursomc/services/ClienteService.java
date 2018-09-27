@@ -44,6 +44,9 @@ public class ClienteService {
 	@Autowired
 	private S3Service s3Service;
 	
+	@Autowired
+	private ClienteService clienteService;
+	
 	public Cliente find(int id) {
 		
 		UserSS user = UserService.authenticated();
@@ -116,6 +119,18 @@ public class ClienteService {
 	}
 	
 	public URI uploadProfilePicture (MultipartFile multipartfile) {
-		return s3Service.upload(multipartfile);
+		
+		UserSS user = UserService.authenticated();
+		if (user == null) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
+		URI uri = s3Service.upload(multipartfile);
+		
+		Cliente cli = clienteService.find(user.getId());
+		cli.setImgUri(uri.toString());
+		repo.save(cli);
+		
+		return uri;
 	}
 }
